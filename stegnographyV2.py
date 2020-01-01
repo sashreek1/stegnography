@@ -8,6 +8,7 @@ def encode(pic_path,text,name,see):
     img = Image.open(pic_path)
     width, height = img.size
     pixels = width*height
+    print('Processing....')
     if pixels<len(text):
         print("encoding not possible")
     else:
@@ -34,6 +35,7 @@ def encode(pic_path,text,name,see):
             j+=skip
         new_img = Image.fromarray(edit_image)
         new_img.save(name+".png")
+        print('Done')
         if see=='y':
             new_img.show()
 
@@ -45,6 +47,7 @@ def decode (pic_path):
     skip = img_ar[0][1][2]
     width, height = img.size
     pixels = width * height
+    print("Decoding.....")
     j = 0
     j += skip
     while j < pixels:
@@ -55,6 +58,7 @@ def decode (pic_path):
         else:
             text += chr(img_ar[i][k][2])
         j += skip
+        print("Completed")
     print(text)
 
 def main():
